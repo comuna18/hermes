@@ -6,6 +6,8 @@ HERMES is a Sendgrid middleware to send emails
 
 Quick start
 -----------
+0. Install with PIP
+    pip install git+https://comuna18_ricardo@bitbucket.org/comuna18/hermes.git
 
 1. Add "hermes" to your INSTALLED_APPS setting like this::
 
