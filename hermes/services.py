@@ -42,6 +42,28 @@ def bcc_get_recipients_list():
     return []
 
 
+def send_raw_email(data):
+    sg = init_sg_client()
+    response = {
+        "code": Logger.STATUS_NEW,
+        "response": "",
+        "sended": False,
+    }
+
+    try:
+        response = sg.client.mail.send.post(request_body=data)
+        response["response"] = "{}".format(response.status_code, response.body)
+        response["code"] = Logger.STATUS_OK
+        response["sended"] = True
+    except Exception as e:
+        response = e
+        response["response"] = "{}".format(e)
+        response["code"] = Logger.STATUS_ERROR
+        response["sended"] = False 
+
+    return response
+
+
 def send_email(recipients_list, subject, content, sender=None):
     """
     :param recipients_list: List with dicts, ex:
