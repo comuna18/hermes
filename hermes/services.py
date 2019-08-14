@@ -44,7 +44,7 @@ def bcc_get_recipients_list():
 
 def send_raw_email(data):
     sg = init_sg_client()
-    response = {
+    res = {
         "code": Logger.STATUS_NEW,
         "response": "",
         "sended": False,
@@ -52,16 +52,15 @@ def send_raw_email(data):
 
     try:
         response = sg.client.mail.send.post(request_body=data)
-        response["response"] = "{}".format(response.status_code, response.body)
-        response["code"] = Logger.STATUS_OK
-        response["sended"] = True
+        res["response"] = "{}".format(response.status_code, response.body)
+        res["code"] = Logger.STATUS_OK
+        res["sended"] = True
     except Exception as e:
-        response = e
-        response["response"] = "{}".format(e)
-        response["code"] = Logger.STATUS_ERROR
-        response["sended"] = False 
+        res["response"] = "{}".format(e)
+        res["code"] = Logger.STATUS_ERROR
+        res["sended"] = False 
 
-    return response
+    return res
 
 
 def send_email(recipients_list, subject, content, sender=None):
