@@ -92,7 +92,7 @@ def send_email(recipients_list, subject, content, sender=None):
     # check if bcc and to email are equals and remove email from bcc array
     if bcc_list:
         recipients_emails = [ recipient["email"] for recipient in recipients_list ]
-        bcc_list = [ bcc_email for bcc_email in bcc_list if bcc_email not in recipients_emails ]
+        bcc_list = [ bcc_email for bcc_email in bcc_list if bcc_email["email"] not in recipients_emails ]
 
     sg = init_sg_client()
 
