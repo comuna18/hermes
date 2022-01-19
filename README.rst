@@ -9,6 +9,10 @@ Quick start
 0. Install with PIP::
 
     pip install git+https://comuna18_ricardo@bitbucket.org/comuna18/hermes.git
+    
+0. Install with pipenv::
+
+    pipenv install git+https://bitbucket.org/comuna18/hermes.git#egg=hermes-mailing
 
 1. Add "hermes" to your INSTALLED_APPS setting like this::
 
